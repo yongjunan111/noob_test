@@ -3,8 +3,6 @@ os: linux
 files:
     - source: /
       destination: /home/ubuntu/new_employee_assistant
-#     - source: /docker-compose.yaml
-#       destination: /home/ubuntu/new_employee_assistant
     - source: /.env
       destination: /home/ubuntu/new_employee_assistant
 file_exists_behavior: OVERWRITE
@@ -17,6 +15,6 @@ permissions:
 
 hooks:
     AfterInstall:
-        - location: scripts/after_deploy.sh
-	          timeout: 100000  # 100초
-          runas: root
+      - location: scripts/after_deploy.sh
+        timeout: 100000  # 100초
+        runas: root
