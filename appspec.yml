@@ -1,4 +1,4 @@
-version: 0
+version: 0.0
 os: linux
 files:
   - source: /
@@ -9,12 +9,12 @@ file_exists_behavior: OVERWRITE
 
 permissions:
   - object: /home/ubuntu/new_employee_assistant
-    pattern: "**"
+    pattern: '**'
     owner: root
     group: root
 
 hooks:
   AfterInstall:
     - location: scripts/after_deploy.sh
-    timeout: 100
-    runas: root
+      timeout: 100
+      runas: root
