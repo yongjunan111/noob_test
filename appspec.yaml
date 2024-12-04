@@ -5,7 +5,7 @@ files:
     destination: /home/ubuntu/new_employee_assistant
   - source: /.env
     destination: /home/ubuntu/new_employee_assistant
-  file_exists_behavior: OVERWRITE
+file_exists_behavior: OVERWRITE
 
 permissions:
   - object: /home/ubuntu/new_employee_assistant
