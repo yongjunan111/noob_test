@@ -29,9 +29,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-70vc8wr2^r^85z*+7--!*9r%8$+q0^^38y&k1qffbt8yang2t9"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = []
+if os.environ.get('DJANGO_ALLOWED_HOSTS'):
+    ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
+else:
+    ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -82,8 +85,12 @@ WSGI_APPLICATION = "new_employee_assistant.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": os.environ.get('SQL_ENGINE', "django.db.backends.postgresql"),
+        "NAME": os.environ.get('SQL_DATABASE', "postgres"),
+        "USER": os.environ.get('SQL_USER', 'user'),
+        "PASSWORD": os.environ.get('SQL_PASSWORD', 'password'),
+        "HOST": os.environ.get('SQL_HOST', 'localhost'),
+        "PORT": os.environ.get('SQL_PORT', '5432'),
     }
 }
 
